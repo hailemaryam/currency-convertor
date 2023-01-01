@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import {HomeComponent} from "./components/home/home.component";
 import {HomeCardComponent} from "./components/home-card/home-card.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AddHeaderInterceptor} from "./api/interceptors/add-header-interceptor.service";
 import {DetailComponent} from "./components/detail/detail.component";
 
 @NgModule({
@@ -19,9 +21,12 @@ import {DetailComponent} from "./components/detail/detail.component";
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
