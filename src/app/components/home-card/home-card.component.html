@@ -1,11 +1,8 @@
 <div class="home-card-grid">
-  <div class="home-card-item">1.00 EUR=XX.XX USD</div>
-  <div class="home-card-item">1.00 EUR=XX.XX USD</div>
-  <div class="home-card-item">1.00 EUR=XX.XX USD</div>
-  <div class="home-card-item">1.00 EUR=XX.XX USD</div>
-  <div class="home-card-item">1.00 EUR=XX.XX USD</div>
-  <div class="home-card-item">1.00 EUR=XX.XX USD</div>
-  <div class="home-card-item">1.00 EUR=XX.XX USD</div>
-  <div class="home-card-item">1.00 EUR=XX.XX USD</div>
-  <div class="home-card-item">1.00 EUR=XX.XX USD</div>
+  <div
+    *ngFor="let rate of rates | keyvalue; let i = index">
+    <div *ngIf="i < 9"  class="home-card-item">
+      {{rate.value && amount ? rate.value * amount : 0 }} {{rate.key}}
+    </div>
+  </div>
 </div>

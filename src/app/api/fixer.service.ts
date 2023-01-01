@@ -13,4 +13,9 @@ export class FixerService {
     const url = 'https://api.apilayer.com/fixer/convert?from=' + from + '&to=' + to + '&amount=' + amount;
     return this.http.get<any>(url);
   }
+
+  latest(base: any): Observable<any>{
+    const url = 'https://api.apilayer.com/fixer/latest?base=' + base;
+    return this.http.get<any>(url);
+  }
 }

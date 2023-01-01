@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {FixerService} from "../../api/fixer.service";
+import {symbols} from "../../api/model/Symbols";
 
 @Component({
   selector: 'app-home',
@@ -10,13 +11,17 @@ import {FixerService} from "../../api/fixer.service";
 })
 export class HomeComponent implements OnInit{
   isSaving = false;
+  rate = '';
+  result = '';
+  options = symbols;
 
   constructor(
-    private fixer: FixerService,
+      private fixer: FixerService,
     private router: Router,
     private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.convert();
   }
 
   editForm = this.fb.group({
@@ -26,9 +31,12 @@ export class HomeComponent implements OnInit{
   });
 
   convert(): void{
-    console.log(this.editForm.value);
     this.fixer.convert(this.editForm.value.from, this.editForm.value.to, this.editForm.value.amount).subscribe(
-      res => {console.log(res)}
+      res => {
+        this.result = `${res.result} ${this.editForm.value.to}`;
+        let exchange = res.result / Number(this.editForm.value.amount);
+        this.rate = `1 ${this.editForm.value.from}= ${exchange}${this.editForm.value.to}`;
+      }
     )
   }
 

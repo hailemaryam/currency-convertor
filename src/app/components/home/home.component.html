@@ -4,16 +4,15 @@
   <div class="form-left">
     <div class="amount-control">
       <label for="amount">Amount</label>
-      <input id="amount" name="amount" formControlName="amount" type="number" value="25" />
+      <input id="amount" name="amount" formControlName="amount" type="number" value="1" min="1" />
     </div>
-    <input id="base_rate" type="text" value="1.00 EUR=XX.XX USD" disabled />
+    <input id="base_rate" type="text" value={{rate}} disabled />
   </div>
   <div class="form-right">
     <div class="from-control">
       <label for="from">From</label>
       <select name="from" formControlName="from" id="from">
-        <option value="EUR">EUR</option>
-        <option value="USD">USD</option>
+        <option *ngFor="let option of options" value={{option}}>{{option}}</option>
       </select>
     </div>
     <div class="arrow-container">
@@ -22,14 +21,13 @@
     <div class="to-control">
       <label for="to">To</label>
       <select name="to" formControlName="to" id="to">
-        <option value="EUR">EUR</option>
-        <option value="USD">USD</option>
+        <option *ngFor="let option of options" value={{option}}>{{option}}</option>
       </select>
     </div>
 
     <button type="submit" [disabled]="editForm.invalid || isSaving" class="action-btn" id="convert">Convert</button>
-    <input id="result" type="text" value="XX.XX USD" disabled>
+    <input id="result" type="text" value={{result}} disabled>
     <button class="action-btn" id="detail" (click)="more()">More Details</button>
   </div>
 </form>
-<app-home-card></app-home-card>
+<app-home-card [base]="editForm.value.from" [amount]="editForm.value.amount"></app-home-card>
