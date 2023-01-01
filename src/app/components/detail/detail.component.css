@@ -1,0 +1,31 @@
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details-title {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.details-card-container {
+  display: grid;
+  height: 40vh;
+}
+
+.details-card-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fff;
+  border-radius: 1em;
+  height: 100%;
+}
+
+@media (max-width: 500px) {
+  .title-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1em;
+  }
+}

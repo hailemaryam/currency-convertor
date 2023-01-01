@@ -1,0 +1,35 @@
+<h1 class="title">Currency Exchanger</h1>
+<br>
+<form name="editForm" class="currency-form" (ngSubmit)="convert()" [formGroup]="editForm">
+  <div class="form-left">
+    <div class="amount-control">
+      <label for="amount">Amount</label>
+      <input id="amount" name="amount" formControlName="amount" type="number" value="25" />
+    </div>
+    <input id="base_rate" type="text" value="1.00 EUR=XX.XX USD" disabled />
+  </div>
+  <div class="form-right">
+    <div class="from-control">
+      <label for="from">From</label>
+      <select name="from" formControlName="from" id="from">
+        <option value="EUR">EUR</option>
+        <option value="USD">USD</option>
+      </select>
+    </div>
+    <div class="arrow-container">
+      <span class="arrow">⟺</span>
+    </div>
+    <div class="to-control">
+      <label for="to">To</label>
+      <select name="to" formControlName="to" id="to">
+        <option value="EUR">EUR</option>
+        <option value="USD">USD</option>
+      </select>
+    </div>
+
+    <button type="submit" [disabled]="editForm.invalid || isSaving" class="action-btn" id="convert">Convert</button>
+    <input id="result" type="text" value="XX.XX USD" disabled>
+    <button class="action-btn" id="detail" (click)="more()">More Details</button>
+  </div>
+</form>
+<app-home-card></app-home-card>
