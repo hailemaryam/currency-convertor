@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import {HomeComponent} from "./components/home/home.component";
 import {HomeCardComponent} from "./components/home-card/home-card.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {DetailComponent} from "./components/detail/detail.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HomeCardComponent
+    HomeCardComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
