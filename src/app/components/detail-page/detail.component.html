@@ -1,0 +1,44 @@
+<!--Title Container-->
+<div class="title-container">
+  <h1 class="title">Detail - <span class="details-title">{{title}}</span></h1>
+  <button class="action-btn">Back to Home</button>
+</div>
+
+<!--Form container-->
+<form name="editForm" class="currency-form" (ngSubmit)="convert()" [formGroup]="editForm">
+  <div class="form-left">
+    <div class="amount-control">
+      <label for="amount">Amount</label>
+      <input id="amount" formControlName="amount" name="amount" type="number" value="25" />
+    </div>
+    <input id="base_rate" type="text" value={{rate}} disabled />
+  </div>
+  <div class="form-right">
+    <div class="from-control">
+      <label for="from">From</label>
+      <select name="from" formControlName="from" id="from">
+        <option *ngFor="let option of options" value={{option}}>{{option}}</option>
+      </select>
+    </div>
+    <div class="arrow-container">
+      <span class="arrow">⟺</span>
+    </div>
+    <div class="to-control">
+      <label for="to">To</label>
+      <select name="to" formControlName="to" id="to">
+        <option *ngFor="let option of options" value={{option}}>{{option}}</option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="editForm.invalid || isSaving" class="action-btn" id="convert">Convert</button>
+    <input id="result" type="text" value={{result}} disabled />
+  </div>
+</form>
+
+<!--Details card container-->
+<div class="details-card-container">
+  <div class="details-card-item">
+        <span>
+          Historical Rates Chart
+        </span>
+  </div>
+</div>

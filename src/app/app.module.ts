@@ -3,12 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HomeComponent} from "./components/home/home.component";
-import {HomeCardComponent} from "./components/home-card/home-card.component";
+import {HomeComponent} from "./components/home-page/home.component";
+import {HomeCardComponent} from "./components/home-page/home-card/home-card.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AddHeaderInterceptor} from "./api/interceptors/add-header-interceptor.service";
-import {DetailComponent} from "./components/detail/detail.component";
+import {DetailComponent} from "./components/detail-page/detail.component";
 
 @NgModule({
   declarations: [

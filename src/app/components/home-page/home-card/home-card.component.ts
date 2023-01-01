@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {FixerService} from "../../api/fixer.service";
+import {FixerService} from "../../../api/fixer.service";
 
 @Component({
   selector: 'app-home-card',
