@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {FixerService} from "../../api/fixer.service";
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,7 @@ export class HomeComponent implements OnInit{
   isSaving = false;
 
   constructor(
+    private fixer: FixerService,
     private router: Router,
     private fb: FormBuilder) {}
 
@@ -25,6 +27,9 @@ export class HomeComponent implements OnInit{
 
   convert(): void{
     console.log(this.editForm.value);
+    this.fixer.convert(this.editForm.value.from, this.editForm.value.to, this.editForm.value.amount).subscribe(
+      res => {console.log(res)}
+    )
   }
 
   more() {
