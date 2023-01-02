@@ -1,3 +1,7 @@
+
+// most of the times this is static data
+// and I am using free api it has limitation of api calls
+// so here I used static data
 export const symbols = [
   "AED",
   "AFN",
