@@ -52,6 +52,7 @@ export class DetailGraphComponent implements OnInit{
         this.fixerService.historic(this.from, date).subscribe(resut=>{
           this.barChartData.datasets[0].data[index] = resut.rates[this.to];
           this.barChartData.datasets[0].data = this.barChartData.datasets[0].data.slice();
+          console.log(this.barChartData.datasets[0].data)
           console.log(resut.rates[this.to]);
         })
       });
@@ -62,7 +63,7 @@ export class DetailGraphComponent implements OnInit{
       for (let i = 12; i > 0; i--) {
         let date = this.subtractMonths(i);
         let lastDayofLastMonth = this.getLastDayOfMonth(date.getFullYear(), date.getMonth());
-        this.barChartData.labels[12-i] = `${lastDayofLastMonth.getFullYear()}-${lastDayofLastMonth.getMonth() + 1}-${lastDayofLastMonth.getDate()}`;
+        this.barChartData.labels[12-i] = `${lastDayofLastMonth.getFullYear()}-${String(lastDayofLastMonth.getMonth() + 1).padStart(2, '0')}-${lastDayofLastMonth.getDate()}`;
         this.barChartData.labels = this.barChartData.labels.slice();
       }
     }
