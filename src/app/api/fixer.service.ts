@@ -18,4 +18,9 @@ export class FixerService {
     const url = 'https://api.apilayer.com/fixer/latest?base=' + base;
     return this.http.get<any>(url);
   }
+
+  historic(base: any, date:any): Observable<any>{
+    const url = 'https://api.apilayer.com/fixer/' + date + '?base=' + base;
+    return this.http.get<any>(url);
+  }
 }
